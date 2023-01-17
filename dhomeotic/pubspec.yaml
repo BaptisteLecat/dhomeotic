@@ -54,6 +54,7 @@ dependencies:
   sign_in_with_apple: ^4.3.0
   iconsax: ^0.0.8
   iconly: ^1.0.1
+  firebase_messaging: ^14.2.1
 
 dev_dependencies:
   flutter_test:
