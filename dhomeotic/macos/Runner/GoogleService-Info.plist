@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>522780245171-64tqtaqsv3n860raru2904kt18m50v4r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.522780245171-64tqtaqsv3n860raru2904kt18m50v4r</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>522780245171-5qu1mmdnkrnfjflo900pfgbht3kmgc2o.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDnVVRgo6dy4sAgaj3kQYapJs3TxzMUzkE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>522780245171</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.blecat.dhomeotic</string>
+	<key>PROJECT_ID</key>
+	<string>dhomotic</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dhomotic.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:522780245171:ios:cff8f121aefe6247d844c6</string>
+	<key>DATABASE_URL</key>
+	<string>https://dhomotic-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "522780245171",
+    "firebase_url": "https://dhomotic-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "dhomotic",
+    "storage_bucket": "dhomotic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522780245171:android:5df783000060eca4d844c6",
+        "android_client_info": {
+          "package_name": "com.blecat.dhomeotic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "522780245171-6vu6ck7q95b0d45inrg2v6acodnbs8mi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvU5h4VkBOHy5OrCH-NSLi338F7js2V_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "522780245171-6vu6ck7q95b0d45inrg2v6acodnbs8mi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "522780245171-64tqtaqsv3n860raru2904kt18m50v4r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dhomeotic"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

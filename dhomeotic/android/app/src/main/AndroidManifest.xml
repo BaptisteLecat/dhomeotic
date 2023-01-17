@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dhomeotic">
+    package="com.blecat.dhomeotic">
    <application
         android:label="dhomeotic"
         android:name="${applicationName}"
