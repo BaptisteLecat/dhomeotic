@@ -4,6 +4,7 @@ import 'package:dhomeotic/presentation/app/bloc/auth_bloc.dart';
 import 'package:dhomeotic/presentation/app/bloc/user_bloc.dart';
 import 'package:dhomeotic/theme/dark_theme.dart';
 import 'package:dhomeotic/theme/light_theme.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,6 +29,16 @@ class _AppRootState extends State<AppRoot> {
     _authBloc = AuthBloc();
     _userBloc = UserBloc();
     _appBloc = AppBloc(authBloc: _authBloc)..add(UserLogInState());
+
+    FirebaseMessaging.instance.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
 
     _router = _goRouter(_appBloc);
   }

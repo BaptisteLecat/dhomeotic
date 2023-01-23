@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:dhomeotic/firebase_options.dart';
 import 'package:dhomeotic/presentation/app/app.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +13,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  log('FCM token: $fcmToken');
   BlocOverrides.runZoned(
     () => initializeDateFormatting('fr_FR', null)
         .then((_) => runApp(const AppRoot())),
