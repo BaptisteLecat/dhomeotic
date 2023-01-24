@@ -55,6 +55,8 @@ dependencies:
   iconsax: ^0.0.8
   iconly: ^1.0.1
   firebase_messaging: ^14.2.1
+  flutter_reactive_ble: ^5.0.3
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:

@@ -9,6 +9,7 @@ import 'package:dhomeotic/presentation/feature/auth/views/sign_up_verification_s
 import 'package:dhomeotic/presentation/feature/auth/views/signup_screen.dart';
 import 'package:dhomeotic/presentation/feature/auth/views/terms_of_services_screen.dart';
 import 'package:dhomeotic/presentation/feature/auth/views/verification_method_screen.dart';
+import 'package:dhomeotic/presentation/feature/bluetooth_device/screen/bluetooth_screen.dart';
 import 'package:dhomeotic/presentation/feature/home/screen/home_screen.dart';
 import 'package:dhomeotic/presentation/feature/notification/view/enable_notification_screen.dart';
 import 'package:dhomeotic/presentation/feature/notification/view/notification_ontions_screen.dart';
@@ -39,6 +40,7 @@ enum AppRoute {
       path: '/notificationsOption', screen: NotificationOptionsScreen()),
   getHelp(path: '/getHelp', screen: GetHelpScreen()),
   associatedAccounts(path: '/associatedAccounts', screen: AccountScreen()),
+  bluetoothDevices(path: '/bluetoothDevices', screen: BluetoothScreen()),
 
   home(path: '/home');
 
@@ -131,6 +133,11 @@ enum AppRoute {
         name: AppRoute.associatedAccounts.name,
         path: AppRoute.associatedAccounts.path,
         builder: (context, state) => AppRoute.associatedAccounts.screen!,
+      ),
+      GoRoute(
+        name: AppRoute.bluetoothDevices.name,
+        path: AppRoute.bluetoothDevices.path,
+        builder: (context, state) => AppRoute.bluetoothDevices.screen!,
       ),
     ];
   }

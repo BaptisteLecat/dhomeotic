@@ -1,10 +1,14 @@
 import 'package:dhomeotic/presentation/app/app_route.dart';
 import 'package:dhomeotic/presentation/feature/home/view/home_view.dart';
+import 'package:dhomeotic/presentation/feature/home/widget/ui/ble_status_screen.dart';
+import 'package:dhomeotic/presentation/feature/home/widget/ui/device_list.dart';
 import 'package:dhomeotic/presentation/feature/profile/views/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final int index;

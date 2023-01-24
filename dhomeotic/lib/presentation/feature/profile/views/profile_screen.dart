@@ -118,6 +118,16 @@ class ProfileScreen extends StatelessWidget {
                 context.push(AppRoute.associatedAccounts.path);
               },
             ),
+            ProfileMenuListTile(
+              text: Text(
+                "Appareils Bluetooth",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              svgSrc: "assets/icons/Profile.svg",
+              press: () {
+                context.push(AppRoute.bluetoothDevices.path);
+              },
+            ),
             DividerListTileWithTrilingText(
               svgSrc: "assets/icons/Notification.svg",
               title: Text(
