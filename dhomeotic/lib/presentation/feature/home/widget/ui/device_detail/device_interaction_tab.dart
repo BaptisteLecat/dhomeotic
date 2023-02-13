@@ -1,3 +1,5 @@
+import 'package:dhomeotic/presentation/app/bloc/app_bloc.dart';
+import 'package:dhomeotic/presentation/app/bloc/user_bloc.dart';
 import 'package:dhomeotic/services/ble/ble_device_connector.dart';
 import 'package:dhomeotic/services/ble/ble_device_interactor.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,9 @@ class DeviceInteractionTab extends StatelessWidget {
         builder: (_, deviceConnector, connectionStateUpdate, serviceDiscoverer,
                 __) =>
             _DeviceInteractionTab(
+          device: device,
           viewModel: DeviceInteractionViewModel(
+              device: device,
               deviceId: device.id,
               connectionStatus: connectionStateUpdate.connectionState,
               deviceConnector: deviceConnector,
@@ -38,12 +42,14 @@ class DeviceInteractionTab extends StatelessWidget {
 @FunctionalData()
 class DeviceInteractionViewModel extends $DeviceInteractionViewModel {
   const DeviceInteractionViewModel({
+    required this.device,
     required this.deviceId,
     required this.connectionStatus,
     required this.deviceConnector,
     required this.discoverServices,
   });
 
+  final DiscoveredDevice device;
   final String deviceId;
   final DeviceConnectionState connectionStatus;
   final BleDeviceConnector deviceConnector;
@@ -64,11 +70,13 @@ class DeviceInteractionViewModel extends $DeviceInteractionViewModel {
 
 class _DeviceInteractionTab extends StatefulWidget {
   const _DeviceInteractionTab({
+    required this.device,
     required this.viewModel,
     Key? key,
   }) : super(key: key);
 
   final DeviceInteractionViewModel viewModel;
+  final DiscoveredDevice device;
 
   @override
   _DeviceInteractionTabState createState() => _DeviceInteractionTabState();
@@ -83,11 +91,16 @@ class _DeviceInteractionTabState extends State<_DeviceInteractionTab> {
     super.initState();
   }
 
-  Future<void> discoverServices() async {
+  Future<void> discoverServices(BuildContext context) async {
     final result = await widget.viewModel.discoverServices();
     setState(() {
       discoveredServices = result;
     });
+    context.read<UserBloc>().add(UserSelectBluetoothDevice(
+          device: widget.device,
+          services: discoveredServices,
+          deviceId: widget.viewModel.deviceId,
+        ));
   }
 
   @override
@@ -119,9 +132,18 @@ class _DeviceInteractionTabState extends State<_DeviceInteractionTab> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           GestureDetector(
-                              onTap: !widget.viewModel.deviceConnected
-                                  ? widget.viewModel.connect
-                                  : null,
+                              onTap: () {
+                                if (!widget.viewModel.deviceConnected) {
+                                  widget.viewModel.connect();
+                                  context
+                                      .read<UserBloc>()
+                                      .add(UserSelectBluetoothDevice(
+                                        device: widget.device,
+                                        services: discoveredServices,
+                                        deviceId: widget.viewModel.deviceId,
+                                      ));
+                                }
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Theme.of(context).primaryColor,
@@ -150,9 +172,11 @@ class _DeviceInteractionTabState extends State<_DeviceInteractionTab> {
                       ),
                       const SizedBox(height: 16.0),
                       GestureDetector(
-                        onTap: widget.viewModel.deviceConnected
-                            ? discoverServices
-                            : null,
+                        onTap: () {
+                          if (widget.viewModel.deviceConnected) {
+                            discoverServices(context);
+                          }
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.grey,

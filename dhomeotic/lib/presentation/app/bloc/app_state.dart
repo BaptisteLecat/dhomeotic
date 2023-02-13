@@ -8,6 +8,7 @@ enum AppStatus {
   splashScreen,
   login,
   logout,
+  selectBluetoothDevice,
 }
 
 extension AppStatusX on AppStatus {
@@ -18,6 +19,7 @@ extension AppStatusX on AppStatus {
   bool get splashScreen => this == AppStatus.splashScreen;
   bool get login => this == AppStatus.login;
   bool get logout => this == AppStatus.logout;
+  bool get selectBluetoothDevice => this == AppStatus.selectBluetoothDevice;
 }
 
 class AppState extends Equatable {
@@ -25,24 +27,33 @@ class AppState extends Equatable {
     this.status = AppStatus.initial,
     this.message = '',
     this.authUser,
+    this.discoveredDevice,
   });
 
   final AppStatus status;
   final String message;
   final User? authUser;
+  final DiscoveredDevice? discoveredDevice;
 
   @override
-  List<Object> get props => [status, message];
+  List<Object?> get props => [
+        status,
+        message,
+        authUser,
+        discoveredDevice,
+      ];
 
   AppState copyWith({
     AppStatus? status,
     String? message,
     User? authUser,
+    DiscoveredDevice? discoveredDevice,
   }) {
     return AppState(
       status: status ?? this.status,
       message: message ?? this.message,
       authUser: authUser,
+      discoveredDevice: discoveredDevice,
     );
   }
 }

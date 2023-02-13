@@ -5,6 +5,7 @@ import 'package:dhomeotic/common/error/app_exception.dart';
 import 'package:dhomeotic/domain/entity/user/user.dart';
 import 'package:dhomeotic/domain/repository/user_repository/user_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 part 'user_event.dart';
 part 'user_state.dart';
 
@@ -21,6 +22,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<UserUpdate>(_onUpdate);
     on<UserDelete>(_onDelete);
     on<UserResetPassword>(_onResetPassword);
+    on<UserSelectBluetoothDevice>(_onSelectBluetoothDevice);
   }
 
   _onFetchOne(
@@ -251,5 +253,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         message: error.message,
       ));
     });
+  }
+
+  _onSelectBluetoothDevice(
+    UserSelectBluetoothDevice event,
+    Emitter<UserState> emit,
+  ) async {
+    emit(state.copyWith(
+      discoveredDevice: event.device,
+      discoveredServices: event.services,
+    ));
   }
 }

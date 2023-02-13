@@ -8,3 +8,9 @@ abstract class AppEvent extends Equatable {
 }
 
 class UserLogInState extends AppEvent {}
+
+class SelectBluetoothDevice extends AppEvent {
+  final DiscoveredDevice discoveredDevice;
+
+  const SelectBluetoothDevice({required this.discoveredDevice});
+}

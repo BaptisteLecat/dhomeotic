@@ -8,6 +8,7 @@ import 'package:dhomeotic/presentation/app/bloc/auth_bloc.dart';
 import 'package:dhomeotic/services/auth/auth_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
@@ -70,6 +71,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
     on<UserLogInState>((event, emit) async {
       _firebaseCheckAuthState();
+    });
+
+    on<SelectBluetoothDevice>((event, emit) async {
+      emit(state.copyWith(
+        discoveredDevice: event.discoveredDevice,
+      ));
     });
   }
 

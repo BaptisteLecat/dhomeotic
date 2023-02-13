@@ -39,3 +39,14 @@ class UserResetPassword extends UserEvent {
   final String email;
   UserResetPassword({required this.email}) : super([email]);
 }
+
+class UserSelectBluetoothDevice extends UserEvent {
+  final DiscoveredDevice device;
+  final List<DiscoveredService> services;
+  final String deviceId;
+  UserSelectBluetoothDevice({
+    required this.device,
+    required this.services,
+    required this.deviceId,
+  }) : super([device, services, deviceId]);
+}
