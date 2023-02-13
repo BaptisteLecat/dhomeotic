@@ -45,6 +45,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
                 message: '',
                 authUser: user.copyWith(firebaseUser: firebaseUser),
               ));
+              print("token: ${user.firebaseUser!.getIdToken()}");
+              print("refreshToken: ${user.firebaseUser!.refreshToken}");
             }).onError((AppException error, stackTrace) async {
               if (error.statusCode == 401) {
                 AuthService.firebaseAuthInstance.signOut();
@@ -89,6 +91,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             authUser: user.copyWith(
                 firebaseUser: AuthService.firebaseAuthInstance.currentUser!),
           ));
+          user.firebaseUser!.getIdToken().then((value) {
+            log("token: $value");
+          });
+          log("refreshToken: ${user.firebaseUser!.refreshToken}");
         }).onError((AppException error, stackTrace) async {
           if (error.statusCode == 401) {
             AuthService.firebaseAuthInstance.signOut();
